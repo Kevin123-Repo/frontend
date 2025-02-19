@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Container, Spinner, Alert, Input, Button } from "reactstrap";
+import { Container, Spinner, Alert, Input } from "reactstrap";
 import ContactsTable from "./ContactsTable";
 
 import "./contactsTable.css";
@@ -14,7 +14,7 @@ const ContactsBoard = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [err, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("First Name");
+  const [selectedFilter, setSelectedFilter] = useState("firstName");
 
   // Get All contacts in DB
   useEffect(() => {
@@ -38,6 +38,7 @@ const ContactsBoard = () => {
     } else {
       const filtered = data.filter((contact) => {
         const fieldValue = contact[selectedFilter];
+        // console.log("field " + fieldValue);
         if (fieldValue !== undefined && fieldValue !== null) {
           return fieldValue
             .toString()
@@ -57,6 +58,7 @@ const ContactsBoard = () => {
 
   // Handle the change in the selected filter field
   const handleFilterChange = (event) => {
+    //console.log("handleFilterChange " + event.target.value)
     setSelectedFilter(event.target.value);
   };
 
@@ -76,14 +78,6 @@ const ContactsBoard = () => {
 
   const handleNavigate = (contactId) => {
     navigate(`/edit/${contactId}`); // Navigate to the edit page with contactId
-  };
-
-  const updateContactsList = (updateContacts) => {
-    setData((prevData) =>
-      prevData.map((contact) =>
-        contact._id === updateContacts._id ? updateContacts : contact
-      )
-    );
   };
 
   if (!isLoaded) {
