@@ -1,0 +1,39 @@
+/* ContactsTable.css */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+.scrollable-container {
+    border-radius: 10px;
+    max-height: 400px;  /* Set the height for scrolling */
+    overflow-y: auto;   /* Allow vertical scrolling */
+    margin-top: 20px;
+    border: 1px solid #ddd;  /* Optional: border around the scrollable container */
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* Adds spacing between each item */
+}
+
+.scrollable-element {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
